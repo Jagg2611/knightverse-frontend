@@ -1,0 +1,1131 @@
+@import "tailwindcss";
+
+/* ==========================================
+CSS VARIABLES
+========================================== */
+:root {
+ --bg-main: #0b0d12;
+ --bg-elevated: #151821;
+ --accent: #49c85f;
+ --accent-soft: rgba(73, 200, 95, 0.18);
+ --text-primary: #f5f7ff;
+ --text-muted: #9ba2be;
+ --border-subtle: #2a3040;
+}
+
+/* ==========================================
+GLOBAL STYLES
+========================================== */
+body {
+ margin: 0;
+ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+ background-color: var(--bg-main);
+ color: var(--text-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+ width: 8px;
+}
+
+::-webkit-scrollbar-track {
+ background: #11141a;
+}
+
+::-webkit-scrollbar-thumb {
+ background: #2a2f3b;
+ border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+ background: #3a3f4d;
+}
+
+/* ==========================================
+LAYOUT - ROOT & MAIN
+========================================== */
+.landing-root {
+ display: flex;
+ min-height: 100vh;
+ background: radial-gradient(circle at top left, #20263a 0, #0b0d12 55%);
+}
+
+.landing-main {
+ flex: 1;
+ padding: 19px 40px 20px;
+ display: flex;
+ justify-content: flex-start;
+ align-items: flex-start;
+ height: 100vh;
+ overflow: hidden;
+}
+
+/* ==========================================
+SIDEBAR
+========================================== */
+.landing-sidebar {
+ display: flex;
+ flex-direction: column;
+ padding: 20px 0 0 0;
+ width: 260px;
+ height: 100vh;
+ border-right: 1px solid var(--border-subtle);
+ background: #10131e;
+ align-items: stretch !important;
+}
+
+/* Logo */
+.logo {
+ padding: 0 24px 20px 24px;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ font-weight: 600;
+ letter-spacing: 0.04em;
+}
+
+.logo-icon {
+ font-size: 22px;
+}
+
+.logo-text {
+ font-size: 20px;
+ font-weight: 750;
+ text-transform: uppercase;
+}
+
+/* Navigation */
+.sidebar-nav {
+ flex: 1;
+ display: flex;
+ flex-direction: column;
+ padding: 0 12px;
+ gap: 4px;
+}
+
+.nav-item {
+ padding: 10px 16px;
+ border-radius: 8px;
+ border: 1px solid transparent;
+ text-align: left;
+ font-size: 16px;
+ font-weight: 600;
+ color: var(--text-muted);
+ background: transparent;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ text-decoration: none;
+ transition: all 0.2s ease;
+}
+
+.nav-icon {
+ display: inline-block;
+ width: 20px;
+ text-align: center;
+ margin-right: 12px;
+ transition: color 0.2s;
+}
+
+.nav-item:hover {
+ background: #1e222b;
+ color: #fff;
+}
+
+.nav-item.active {
+ background: rgba(73, 200, 95, 0.15);
+ color: #49c85f;
+ border-color: rgba(73, 200, 95, 0.2);
+}
+
+.nav-item.active .nav-icon {
+ color: #49c85f;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+ width: 100% !important;
+ min-width: 100% !important;
+ box-sizing: border-box;
+ margin: auto 0 0 0 !important;
+ background: #0b0d12;
+ border-top: 1px solid #2a3040;
+ padding: 16px 24px;
+}
+
+.user-block {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+}
+
+.user-name {
+ color: #fff;
+ font-weight: 700;
+ font-size: 15px;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ max-width: 150px;
+}
+
+/* ==========================================
+HEADER
+========================================== */
+.landing-header {
+ position: absolute;
+ top: 0;
+ right: 0;
+ padding: 20px 28px;
+ display: flex;
+ justify-content: flex-end;
+ width: calc(100% - 220px);
+ pointer-events: none;
+}
+
+.header-right {
+ display: flex;
+ gap: 12px;
+ pointer-events: auto;
+}
+
+.login-btn {
+ padding: 8px 18px;
+ font-size: 14px;
+ background: transparent;
+ border: 1px solid var(--border-subtle);
+ border-radius: 999px;
+ color: var(--text-primary);
+ cursor: pointer;
+ transition: 0.15s ease;
+}
+
+.login-btn:hover {
+ background: #1a1e29;
+ border-color: #3d4558;
+}
+
+.signup-btn {
+ padding: 8px 20px;
+ background: var(--accent);
+ border-radius: 999px;
+ border: none;
+ color: #0a0f0d;
+ font-weight: 600;
+ cursor: pointer;
+ transition: 0.15s ease;
+}
+
+.signup-btn:hover {
+ background: #3fb556;
+}
+
+/* ==========================================
+HERO SECTION
+========================================== */
+.hero-wrapper {
+ width: 100%;
+ height: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ box-sizing: border-box;
+}
+
+.hero {
+ display: grid;
+ grid-template-columns: minmax(260px, 360px) minmax(320px, 540px);
+ gap: 64px;
+ align-items: center;
+ width: 100%;
+ max-width: 980px;
+}
+
+/* Hero Art */
+.hero-art {
+ position: relative;
+ height: 280px;
+ border-radius: 24px;
+ background: radial-gradient(circle at 20% 10%, #303752 0, #11141f 55%);
+ box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+ overflow: hidden;
+}
+
+.piece {
+ position: absolute;
+ border-radius: 999px;
+ filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.6));
+}
+
+.piece-main {
+ width: 120px;
+ height: 180px;
+ background: radial-gradient(circle at 20% 20%, #78ff96 0, #2ea744 60%);
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -55%);
+}
+
+.piece-back-left {
+ width: 90px;
+ height: 150px;
+ background: linear-gradient(180deg, #53586c 0, #2b3140 100%);
+ left: 12%;
+ top: 35%;
+}
+
+.piece-back-right {
+ width: 100px;
+ height: 170px;
+ background: linear-gradient(180deg, #414862 0, #1d2233 100%);
+ right: 10%;
+ top: 30%;
+}
+
+/* Hero Text */
+.hero-text h1 {
+ font-size: 40px;
+ line-height: 1.1;
+ margin: 0 0 18px;
+}
+
+.hero-text .highlight {
+ color: var(--accent);
+}
+
+.hero-subtitle {
+ margin: 0 0 20px;
+ color: var(--text-muted);
+ font-size: 15px;
+ max-width: 420px;
+}
+
+.hero-actions {
+ display: flex;
+ gap: 12px;
+ align-items: center;
+ margin-bottom: 16px;
+ justify-content: center;
+}
+
+.hero-stats {
+ display: flex;
+ gap: 24px;
+ margin-top: 8px;
+ justify-content: center;
+}
+
+.stat {
+ display: flex;
+ flex-direction: column;
+ gap: 4px;
+}
+
+.stat-label {
+ font-size: 12px;
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ color: var(--text-muted);
+}
+
+.stat-value {
+ font-size: 18px;
+ font-weight: 600;
+}
+
+/* ==========================================
+BUTTONS
+========================================== */
+.primary-btn {
+ padding: 11px 22px;
+ border-radius: 999px;
+ border: none;
+ background: var(--accent);
+ color: #040608;
+ font-weight: 600;
+ font-size: 14px;
+ cursor: pointer;
+ box-shadow: 0 10px 26px rgba(73, 200, 95, 0.45);
+ transition: transform 0.09s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.primary-btn:hover {
+ transform: translateY(-1px);
+ background: #3fb556;
+ box-shadow: 0 14px 30px rgba(73, 200, 95, 0.6);
+}
+
+.ghost-btn {
+ padding: 10px 18px;
+ border-radius: 999px;
+ border: 1px solid var(--border-subtle);
+ background: transparent;
+ color: var(--text-primary);
+ font-size: 14px;
+ cursor: pointer;
+ transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ghost-btn:hover {
+ background: #171b26;
+ border-color: #3a4256;
+}
+
+.secondary-btn {
+ padding: 10px 12px;
+ border-radius: 999px;
+ border: 1px solid var(--border-subtle);
+ background: transparent;
+ color: var(--text-muted);
+ font-size: 14px;
+ font-weight: 600;
+ text-align: left;
+ cursor: pointer;
+ transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.secondary-btn:hover {
+ background: #151821;
+ border-color: #3a4256;
+ color: var(--text-primary);
+}
+
+/* ==========================================
+BOARD & GAME PAGE
+========================================== */
+.board-container {
+ height: 72vh;
+ width: 72vh;
+ max-height: 680px;
+ max-width: 680px;
+ position: relative;
+ z-index: 1;
+}
+
+/* Square Effects */
+.square-glow {
+ box-shadow: inset 0 0 12px 4px rgba(255, 255, 0, 0.7);
+}
+
+.square-possible {
+ box-shadow: inset 0 0 10px 3px rgba(0, 170, 255, 0.5);
+}
+
+.square-check {
+ box-shadow: inset 0 0 16px 5px rgba(255, 0, 0, 0.7);
+}
+
+.ghost-trail {
+ background-color: rgba(255, 255, 0, 0.35);
+ box-shadow: 0 0 10px rgba(255, 255, 0, 0.2);
+ filter: brightness(1.08);
+ transition: all 0.25s ease-out;
+}
+
+/* Clock Display */
+.clock-display {
+ font-size: 1.5rem;
+ font-weight: 700;
+ margin-left: 28px;
+ letter-spacing: 0.05em;
+ color: var(--text-primary);
+ background: #10131e;
+ padding: 4px 8px;
+ border-radius: 4px;
+ display: flex;
+ transition: background 0.2s ease;
+ align-items: center;
+ justify-content: center;
+}
+
+.active-clock {
+ background: #4caf50;
+ box-shadow: 0 0 12px #4caf50aa;
+ transition: 0.2s;
+}
+
+.self-player-bar .text-primary {
+ color: var(--accent);
+}
+
+/* ==========================================
+RIGHT PANEL & LOBBY
+========================================== */
+.right-panel {
+ width: 330px;
+ margin-left: 12px;
+ flex-shrink: 0;
+}
+
+.right-panel-scroll {
+ overflow-y: auto;
+ padding-right: 6px;
+}
+
+.right-panel-scroll::-webkit-scrollbar {
+ width: 8px;
+}
+
+.right-panel-scroll::-webkit-scrollbar-track {
+ background: #11141b;
+}
+
+.right-panel-scroll::-webkit-scrollbar-thumb {
+ background: #2c3242;
+ border-radius: 8px;
+}
+
+.right-panel-scroll::-webkit-scrollbar-thumb:hover {
+ background: #3d4456;
+}
+
+/* Lobby Menu Button */
+.lobby-menu-btn {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ width: 100%;
+ padding: 12px;
+ background: var(--bg-elevated);
+ border: 1px solid var(--border-subtle);
+ border-radius: 8px;
+ cursor: pointer;
+ transition: all 0.15s ease;
+ text-align: left;
+}
+
+.lobby-menu-btn:hover {
+ border-color: #3a4256;
+ background: #171b26;
+ transform: translateY(-1px);
+}
+
+.lobby-menu-btn.active {
+ background: var(--accent-soft) !important;
+ border-color: var(--accent-soft) !important;
+ color: var(--text-primary);
+ transform: translateY(-1px);
+}
+
+.lobby-menu-btn .icon {
+ font-size: 24px;
+}
+
+.lobby-menu-btn .text-content {
+ display: flex;
+ flex-direction: column;
+ gap: 2px;
+}
+
+.lobby-menu-btn .title {
+ font-size: 16px;
+ font-weight: 600;
+ color: var(--text-primary);
+}
+
+.lobby-menu-btn .subtitle {
+ font-size: 13px;
+ color: var(--text-muted);
+}
+
+/* Lobby Panel Content */
+.lobby-panel-content {
+ padding: 16px;
+ background: var(--bg-elevated);
+ border-radius: 8px;
+ margin-top: -13px;
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+}
+
+.lobby-panel-content .list-item {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 12px;
+ background: var(--bg-main);
+ border-radius: 6px;
+ color: var(--text-primary);
+}
+
+/* Arrow Animation */
+.arrow {
+ margin-left: auto;
+ font-size: 16px;
+ transition: transform 0.25s ease;
+ opacity: 0.7;
+}
+
+.arrow.rotate {
+ transform: rotate(180deg);
+ opacity: 1;
+}
+
+/* Time Control Options */
+.time-option {
+ transition: background 0.2s ease, border 0.2s ease;
+ border: 1px solid transparent;
+}
+
+.time-option.highlight,
+.time-selected {
+ background: var(--accent-soft);
+ border-color: var(--accent);
+}
+
+/* Start Game Button */
+.start-game-btn {
+ width: 100%;
+ padding: 12px;
+ margin-top: 6px;
+ border-radius: 8px;
+ border: none;
+ font-weight: 700;
+ font-size: 16px;
+ text-align: center;
+ cursor: pointer;
+ transition: all 0.25s ease;
+}
+
+.start-game-btn.disabled {
+ background: #2b333f;
+ color: #6b7183;
+ cursor: not-allowed;
+ opacity: 0.7;
+}
+
+.start-game-btn.enabled {
+ background: var(--accent);
+ color: #050809;
+ box-shadow: 0 8px 20px rgba(73, 200, 95, 0.35);
+}
+
+.start-game-btn.enabled:hover {
+ background: #3fb556;
+ transform: translateY(-1px);
+ box-shadow: 0 4px 12px rgba(72, 200, 95, 0.35);
+}
+
+/* ==========================================
+MOVE LIST TABLE
+========================================== */
+.move-table {
+ width: 100%;
+ border-collapse: collapse;
+ table-layout: fixed;
+}
+
+.move-table th {
+ padding: 6px 4px;
+ text-align: left;
+ color: #bfc4d1;
+ font-weight: 600;
+ font-size: 13px;
+ border-bottom: 1px solid #2b2f38;
+}
+
+.move-table td {
+ padding: 6px 4px;
+ font-size: 14px;
+ color: #e6e6e6;
+}
+
+.move-row:nth-child(even) {
+ background-color: #1e222a;
+}
+
+.move-row:nth-child(odd) {
+ background-color: transparent;
+}
+
+.move-table td:first-child {
+ cursor: default;
+ color: #6b7183;
+ font-weight: 600;
+}
+
+.move-table td:first-child:hover {
+ background: transparent !important;
+ color: #6b7183 !important;
+}
+
+.move-table td.active-move {
+ background: rgba(73, 200, 95, 0.15) !important;
+ color: #49c85f;
+ font-weight: 600;
+}
+
+/* ==========================================
+MODALS
+========================================== */
+.modal-overlay,
+.ai-modal-overlay {
+ position: fixed;
+ inset: 0;
+ background: rgba(0, 0, 0, 0.75);
+ backdrop-filter: blur(4px);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ z-index: 9999;
+ animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+ background: #1a1d26;
+ border: 1px solid var(--border-subtle);
+ padding: 32px;
+ border-radius: 16px;
+ width: 100%;
+ max-width: 420px;
+ box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+ animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+ z-index: 10000;
+}
+
+.ai-modal-content {
+ background: #1a1d26;
+ border: 1px solid var(--border-subtle);
+ padding: 32px;
+ border-radius: 16px;
+ width: 100%;
+ max-width: 550px;
+ box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+ display: flex;
+ flex-direction: column;
+ gap: 24px;
+ animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* AI Difficulty Options */
+.ai-option-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 12px;
+}
+
+.diff-btn {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 14px 16px;
+ background: #232732;
+ border: 1px solid transparent;
+ border-radius: 8px;
+ color: var(--text-muted);
+ font-size: 15px;
+ cursor: pointer;
+ transition: all 0.15s ease;
+}
+
+.diff-btn:hover {
+ background: #2a2f3b;
+ border-color: #444;
+ transform: translateY(-1px);
+}
+
+.diff-btn.selected {
+ background: var(--accent-soft);
+ border-color: var(--accent);
+ color: var(--text-primary);
+ box-shadow: 0 0 15px rgba(73, 200, 95, 0.1);
+}
+
+.diff-elo {
+ font-family: 'Monaco', monospace;
+ font-size: 0.85em;
+ opacity: 0.6;
+ background: rgba(0,0,0,0.2);
+ padding: 2px 6px;
+ border-radius: 4px;
+}
+
+.diff-btn.selected .diff-elo {
+ color: var(--accent);
+ opacity: 1;
+ font-weight: bold;
+}
+
+/* ==========================================
+ANIMATIONS
+========================================== */
+@keyframes fadeIn {
+ from {
+ opacity: 0;
+ }
+ to {
+ opacity: 1;
+ }
+}
+
+@keyframes slideUp {
+ from {
+ opacity: 0;
+ transform: translateY(20px) scale(0.95);
+ }
+ to {
+ opacity: 1;
+ transform: translateY(0) scale(1);
+ }
+}
+
+@keyframes slideDown {
+ from {
+ opacity: 0;
+ transform: translateY(-6px) scaleY(0.95);
+ }
+ to {
+ opacity: 1;
+ transform: translateY(0) scaleY(1);
+ }
+}
+
+.dropdown-anim,
+.animate-slideDown {
+ animation: slideDown 0.3s ease-out;
+ transform-origin: top;
+}
+
+/* ==========================================
+MOBILE HAMBURGER MENU
+========================================== */
+.hamburger-btn {
+ display: none;
+}
+
+.sidebar-overlay {
+ position: fixed;
+ inset: 0;
+ background: rgba(0, 0, 0, 0.6);
+ backdrop-filter: blur(4px);
+ z-index: 999;
+ opacity: 0;
+ pointer-events: none;
+ transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+ opacity: 1;
+ pointer-events: auto;
+}
+
+/* ==========================================
+RESPONSIVE DESIGN
+========================================== */
+
+/* Tablet & Below (< 1024px) */
+@media (max-width: 1024px) {
+ .right-panel {
+ width: 100%;
+ margin-left: 0;
+ }
+}
+
+/* Mobile & Below (< 900px) */
+@media (max-width: 1280px) {
+ .landing-root {
+ flex-direction: column;
+ }
+
+ .landing-sidebar .logo {
+ display: none !important;
+ }
+
+ /* Hamburger Menu */
+ .hamburger-btn {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ position: fixed;
+ top: 20px;
+ left: 20px;
+ z-index: 1100;
+ background: #232732;
+ color: white;
+ width: 44px;
+ height: 44px;
+ border-radius: 8px;
+ border: 1px solid #3a4256;
+ cursor: pointer;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+ }
+
+ /* Header Adjustment */
+  .landing-header {
+    width: 100%;
+    /* Change to space-between to separate Logo (Left) and Buttons (Right) */
+    justify-content: space-between !important; 
+    align-items: center;
+    padding-left: 80px;
+    box-sizing: border-box;
+    pointer-events: none; /* Prevent header from blocking clicks in the middle */
+  }
+
+  /* Ensure buttons are still clickable */
+  .header-right {
+    pointer-events: auto;
+  }
+
+ /* Main Content Centering */
+ .landing-main.mobile-content-fix {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ padding: 80px 20px 40px;
+ box-sizing: border-box;
+ }
+
+ /* Sidebar Mobile Slide-In */
+ .landing-sidebar {
+ position: fixed;
+ top: 0;
+ left: -280px;
+ width: 260px;
+ height: 100vh;
+ background-color: #151821;
+ z-index: 1000;
+ transition: transform 0.3s ease;
+ border-right: 1px solid #2a3040;
+ display: flex;
+ flex-direction: column;
+ padding-top: 20px;
+ }
+
+ .landing-sidebar.open {
+ transform: translateX(280px);
+ }
+
+ .sidebar-nav {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ }
+
+ .nav-item {
+ display: flex;
+ align-items: center;
+ width: 100%;
+ box-sizing: border-box;
+ }
+
+ /* Hero Mobile Layout */
+ .hero {
+ display: flex !important;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ width: 100%;
+ max-width: 100%;
+ margin: 0 auto;
+ gap: 32px;
+ }
+
+ .hero-art {
+ display: none;
+ }
+}
+
+/* ==========================================
+✅ MOBILE BOARD SIZING FIX (< 767px)
+========================================== */
+@media (max-width: 767px) {
+  /* ✅ FIX 1: Remove all padding/spacing when on game pages */
+  .landing-main {
+    padding: 0 !important;
+    margin: 0 !important;
+    
+    /* Full viewport height */
+    min-height: 100vh !important;
+    height: 100vh !important;
+    
+    /* Enable Flexbox centering */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    /* Prevent any scrolling */
+    overflow: hidden !important;
+  }
+
+  /* ✅ FIX 2: Ensure root container doesn't scroll */
+  .landing-root {
+    height: 100vh;
+    overflow: hidden !important;
+  }
+
+  /* ✅ FIX 3: Make sure the header doesn't take up space on game pages */
+  .landing-header {
+    position: fixed !important; /* Changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 12px 16px;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  /* ✅ FIX 4: Hamburger positioning */
+  .hamburger-btn {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1100;
+    background: #232732;
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid #3a4256;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    pointer-events: auto;
+  }
+
+  /* ✅ FIX 5: Board container sizing */
+  .board-container {
+    width: calc(100vw - 24px) !important;
+    height: auto !important;
+    max-width: 600px !important;
+    max-height: unset !important;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    touch-action: none !important;
+  }
+
+  .board-container > div {
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: none !important;
+  }
+
+  /* ✅ Touch interaction improvements */
+  .board-container [data-piece],
+  [id^="MobileBoard"] [data-piece],
+  [id^="MainBoard"] [data-piece],
+  [id^="ai-board"] [data-piece] {
+    touch-action: none !important;
+    pointer-events: auto !important;
+    cursor: grab !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .board-container [data-piece]:active,
+  [id^="MobileBoard"] [data-piece]:active,
+  [id^="MainBoard"] [data-piece]:active,
+  [id^="ai-board"] [data-piece]:active {
+    cursor: grabbing !important;
+  }
+
+  .board-container [data-square],
+  [id^="MobileBoard"] [data-square],
+  [id^="MainBoard"] [data-square],
+  [id^="ai-board"] [data-square] {
+    touch-action: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Improve touch responsiveness */
+  .board-container *,
+  [id^="MobileBoard"] *,
+  [id^="MainBoard"] *,
+  [id^="ai-board"] * {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+  }
+
+  /* ✅ FIX 6: Hide mobile logo on game pages */
+  .mobile-logo {
+    display: none;
+  }
+}
+
+/* Extra Small Mobile (< 500px) */
+@media (max-width: 500px) {
+  .board-container {
+    padding: 0 !important;
+    width: calc(100vw - 16px) !important; /* Reduced from 24px to 16px for more space */
+  }
+  
+  .hamburger-btn {
+    top: 8px;
+    left: 8px;
+  }
+}
+
+/* Extra Small Mobile (< 500px) */
+@media (max-width: 500px) {
+ .board-container {
+ padding: 0 !important;
+ width: calc(100vw - 24px) !important;
+ }
+} 
+
+/* Default: Hide mobile logo (shown on desktop sidebar instead) */
+.mobile-logo {
+  display: none;
+}
+
+/* Mobile Layout (< 1280px) */
+@media (max-width: 1279px) {
+  /* Position mobile logo on TOP RIGHT */
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+    cursor: pointer;
+    pointer-events: auto;
+    /* Remove left margin, it should be on the right */
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  /* Header Layout: Hamburger Left, Logo Right, Buttons Far Right */
+  .landing-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 16px 20px !important;
+    padding-left: 80px !important; /* Space for hamburger */
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* On mobile when NOT signed in, logo should be between hamburger and auth buttons */
+  .landing-header:not(:has(.header-right:empty)) .mobile-logo {
+    margin-right: auto; /* Pushes auth buttons to far right */
+  }
+  
+  /* When sidebar opens on mobile, show its logo */
+  .landing-sidebar.open .logo {
+    display: flex !important;
+  }
+}
+
+/* Desktop: Always hide mobile logo, always show sidebar logo */
+@media (min-width: 1280px) {
+  .mobile-logo {
+    display: none !important;
+  }
+  
+  .landing-sidebar .logo {
+    display: flex !important;
+  }
+  
+  /* Desktop header back to normal */
+  .landing-header {
+    justify-content: flex-end !important;
+  }
+}
