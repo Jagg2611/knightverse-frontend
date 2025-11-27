@@ -9,21 +9,19 @@ import { createClient } from "graphql-ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { SetContextLink } from "@apollo/client/link/context";
 
-// 1. Define your backend URLs dynamically
-// Vite uses import.meta.env.PROD to detect if we are building for production
+// 🔥 Dynamic URLs based on environment
 const isProduction = import.meta.env.PROD;
 
 const BACKEND_HTTP = isProduction
   ? "https://knightverse-backend.onrender.com/graphql"
-  : "http://localhost:4000/graphql"; // Changed 3000 to 4000 to match your backend logs
+  : "http://localhost:3000/graphql"; // ✅ Fixed to port 3000
 
 const BACKEND_WS = isProduction
   ? "wss://knightverse-backend.onrender.com/graphql"
-  : "ws://localhost:4000/graphql";
+  : "ws://localhost:3000/graphql"; // ✅ Fixed to port 3000
 
 export const createApolloClient = (getToken: (x?: any) => Promise<string | null>) => {
 
-  // 🔥 Always get a fresh Clerk JWT (template ensures refresh)
   const authLink = new SetContextLink(async (_, { headers }) => {
     const token = await getToken({ template: "backend-test" });
 
@@ -35,10 +33,9 @@ export const createApolloClient = (getToken: (x?: any) => Promise<string | null>
     };
   });
 
-  // 🔥 WebSocket link for subscriptions
   const wsLink = new GraphQLWsLink(
     createClient({
-      url: BACKEND_WS, // ✅ Uses the dynamic variable
+      url: BACKEND_WS, // ✅ Uses dynamic variable
       webSocketImpl: WebSocket,
 
       lazy: false,
@@ -53,7 +50,6 @@ export const createApolloClient = (getToken: (x?: any) => Promise<string | null>
       connectionAckWaitTimeout: 10000,
 
       connectionParams: async () => {
-        // 🔥 MUST be refreshed JWT here too!!
         const token = await getToken({ template: "backend-test" });
 
         return {
@@ -63,14 +59,12 @@ export const createApolloClient = (getToken: (x?: any) => Promise<string | null>
     })
   );
 
-  // HTTP link
   const httpLink = new HttpLink({
-    uri: BACKEND_HTTP, // ✅ Uses the dynamic variable
+    uri: BACKEND_HTTP, // ✅ Uses dynamic variable
   });
 
   const httpAuthLink = authLink.concat(httpLink);
 
-  // Split subscriptions vs HTTP
   const splitLink = ApolloLink.split(
     ({ query }) => {
       const def = getMainDefinition(query);
