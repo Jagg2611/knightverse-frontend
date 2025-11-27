@@ -9,6 +9,18 @@ import { createClient } from "graphql-ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { SetContextLink } from "@apollo/client/link/context";
 
+// 1. Define your backend URLs dynamically
+// Vite uses import.meta.env.PROD to detect if we are building for production
+const isProduction = import.meta.env.PROD;
+
+const BACKEND_HTTP = isProduction
+  ? "https://knightverse-backend.onrender.com/graphql"
+  : "http://localhost:4000/graphql"; // Changed 3000 to 4000 to match your backend logs
+
+const BACKEND_WS = isProduction
+  ? "wss://knightverse-backend.onrender.com/graphql"
+  : "ws://localhost:4000/graphql";
+
 export const createApolloClient = (getToken: (x?: any) => Promise<string | null>) => {
 
   // 🔥 Always get a fresh Clerk JWT (template ensures refresh)
@@ -26,7 +38,7 @@ export const createApolloClient = (getToken: (x?: any) => Promise<string | null>
   // 🔥 WebSocket link for subscriptions
   const wsLink = new GraphQLWsLink(
     createClient({
-      url: "ws://localhost:3000/graphql",
+      url: BACKEND_WS, // ✅ Uses the dynamic variable
       webSocketImpl: WebSocket,
 
       lazy: false,
@@ -53,7 +65,7 @@ export const createApolloClient = (getToken: (x?: any) => Promise<string | null>
 
   // HTTP link
   const httpLink = new HttpLink({
-    uri: "http://localhost:3000/graphql",
+    uri: BACKEND_HTTP, // ✅ Uses the dynamic variable
   });
 
   const httpAuthLink = authLink.concat(httpLink);
